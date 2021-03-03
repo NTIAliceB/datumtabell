@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DatumTabell</title>
+    <style>
+
+        body{
+            margin: 0px;
+            padding-top: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            font-size: 10vh;
+        }
+
+       tbody{
+           background-color: rgb(236, 204, 175);
+       }
+
+       table{
+           background-color: rgb(230, 156, 87);
+           padding: 2vh;
+       }
+    </style>
+</head>
+
+<body>
+
+    <tbody><table border="1">
+        <tr>
+            <td>År</td>
+            <td id="year">---</td>
+        </tr>
+        <tr>
+            <td>Månad</td>
+            <td id="monad">---</td>
+        </tr>
+        <tr>
+            <td>Datum</td>
+            <td id="datum">---</td>
+        </tr>
+        <tr>
+            <td>Dag</td>
+            <td id="dag">---</td>
+        </tr>
+    </table></tbody>
+        
+
+
+
+
+    <script>
+
+        function tidstabell() {
+
+            let timestamp = new Date()
+            let year = timestamp.getFullYear()
+            let month = timestamp.getMonth()
+            let day = timestamp.getDay()
+
+            let mo = month + 1;
+          
+
+            var monthNames = ["Januari", "February", "Mars", "April", "Maj", "Juni",
+            "Juli", "Augusti", "September", "Otober", "November", "December"];
+
+            var days = ['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'];
+
+            
+
+            document.querySelector("#year").innerHTML = year.toString()
+            document.querySelector("#datum").innerHTML = day.toString().padStart(2,'0')
+            document.querySelector("#dag").innerHTML = days[timestamp.getDay()];
+            document.querySelector("#monad").innerHTML = monthNames[timestamp.getMonth()] + mo
+
+            setInterval("tidstabell()",1000);
+        }
+
+        tidstabell()
+    
+
+    </script>
+    
+</body>
+</html>
